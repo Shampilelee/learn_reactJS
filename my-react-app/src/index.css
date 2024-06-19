@@ -1,0 +1,50 @@
+body {
+  background-color: #252424;
+  color: white;
+}
+
+.card {
+  border: 1px solid white;
+  border-radius: 7px;
+  box-shadow: 5px 5px 5px rgb(34, 34, 119);
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  max-width: 600px;
+
+  /* 
+    HEPLS ELEMENTS MOVE TO INLINE WHEN THE WIDTH IS SMALL, 
+    OR BLOCK WHEN WIDTH IS BIGGER AUTOMATICALLY.
+  */
+  display: inline-block;
+}
+
+.card .card_Img {
+  width: 200px;
+
+  /* Circle image */
+  border-radius: 50%;
+}
+
+.card .card_Title {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #575757;
+}
+
+.card .card_text {
+  font-family: monospace, sans-serif;
+  color: #bebebe;
+}
+
+.student_Card {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2vw;
+  border: 1px solid white;
+  border-radius: 7px;
+}
+
+.box {
+  border: solid 2px black;
+}
+
+

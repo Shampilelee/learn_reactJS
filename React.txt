@@ -1,0 +1,1779 @@
+
+					// REACT \\
+
+		// REACT SETUP \\
+
+// installing react app
+[ npm i -g create-react-app@1.5.2 ]
+
+// creating project
+/*
+To  react you need to have nodeJS installed
+*/
+[ npx create-react-app my-app ]
+
+// start server
+// goto project folder, and run code below in command prompt
+[ npm start ]
+
+Install Bootstrap
+[npm i bootstrap@4.1.1]
+
+
+
+React is a JavaScript library for building fast and intreactive user interfaces, 
+it was developed at Facebook in 2011.
+
+React JS is a component-bases front-end library, 
+which means that all parts of the web application are divided into small components.
+
+A component is a small pice of the user interface, Every react application is a tree of components.
+
+components that you split the UI into independent reuseable parts.
+
+
+DOM
+The Document Object Model sync the document for changes, and takes the required action,
+the Virtual DOM, Thus the sync faster, smoother and earier. 
+The Virtual DOM updates ONLY the section of the document that has changed.
+
+
+There Two Types Of Components: Functional, and Class-Based Components.
+
+
+[[ Class-Based Component ]]
+
+{{
+
+import React, {Component} from 'react'
+
+class Example extends Component {
+   // 'render()' describes what to be displayed and how it should look like.
+   render() {
+      return <div> Hello World! </div>
+   }
+}
+
+}}
+
+
+IF YOU DON'T KNOW HOW TO USE CLASS, METHODS OR 'extends' DON'T WORRY,
+THEY HAVE BEEN REPLACED BY 'Functional Components' YOU DON'T HAVE TO USE 'Class Components' ANY MORE.
+
+
+[[ Functional Components ]]
+
+{{
+
+import React from 'react'
+
+// Here, I created the component with an arrow function, 
+// which tells react what to display by returning it(Content).
+const Example = () => {
+  return <div> Hello World! </div>
+}
+
+}}
+
+
+A react fregment is like an empty 'dev' inside there,
+you can put some code.
+[[
+ <>
+   test
+ </>
+]]
+
+If you want to render two or more different elements, one close to another,
+you have to wrap them in react fregment
+[[
+ <>
+  <h1> text </h1>
+  <p> James </p>
+  <h2> h2 </h2>
+  <div>  
+   wow
+  </div>
+ </>
+]]
+
+You can use it for condition statement
+[[
+  {isUser_logged_In ? (
+      <>
+        test
+      </>
+    ) : (
+      <>
+        <h1>text</h1>
+        <p>James</p>
+        <h2>h2</h2>
+        <div>
+          wow
+        </div>
+      </>
+    )
+  }
+]]
+
+
+
+	// Components \\
+
+A component is also a pice of code that returns or renders some JSX code. example below.
+[[
+const Person = () => {
+
+  return (
+    <>
+      <h1>Name: Dhope</h1>
+      <h2>Last Name: Nation</h2>
+      <h2>Age: 43</h2>
+    </>
+  );
+}
+]]
+
+
+
+To use a component in another component, see example below.
+[[
+  const App = () => {
+    return (
+      <div className="App">
+        <Person />
+      </div>
+    );
+  }
+]]
+
+On Advantage Of Creating Another Component And Importing It Into The
+Root Component Is That, You Can Duplicate The Same Component In The Root Component Many Times.
+
+
+
+      // Props In React Component \\
+props = (short for properties) they are read-only properties, that are shared between components.
+A parent componen can send data to a child component.
+[
+  function Student(props) {
+    
+      return (
+          <div className="student_Card">
+              <p>Name: {props.name} </p>
+              <p>Age: {props.age} </p>
+              <p>is_Student: {props.is_Student ? "Yes" : "No"}</p>
+          </div>
+      );
+  }
+
+  export default Student
+
+
+
+  import Student from './Student';
+  import './App.css'
+
+  function App() {
+
+    return (
+      <>
+        {/* <Button /> */}
+        {/* <Header/> */}
+        {/* <Card/> */}
+        {/* <Footer/> */}
+        <Student name="Dhope" age={27} is_Student={true} />
+        <Student name="Nation" age={27} is_Student={true} />
+        <Student name="Shampilelee" age={27} is_Student={true} />
+      </>
+    );
+  }
+
+  export default App
+
+]
+
+
+Every Component has a built_in props(Parameters), see example on how to use it below.
+[[
+  const Person = (props) => {
+    return (
+      <>
+        <h3>Name: {props.name}</h3>
+        <h4>Last Name: {props.lastName}</h4>
+        <h4>Age: {props.age}</h4>
+      </>
+    );
+  }
+
+  const App = () => {
+    return (
+      <div className="App">
+        <Person 
+          name='Theophilus' 
+          age={24}
+        />
+        <Person name="Dhope" age={25}/>
+      </div>
+    );
+  }
+]]
+
+
+
+      // State In  React \\
+State In React is a plain JavaScript Object, Used By React;
+To Represent A Pice Of Information, About Component's Current Situation 
+
+It's completely managed by the component itself.
+
+To Create State In React, see code below
+[[
+  import { useState } from 'react';
+  import './App.css';
+
+  // THIS IS THE MAIN(root) COMPONENT
+  const App = () => {
+    // Here we use the 'counter' to hold the output of this State,
+    // We alse use the 'setCounter' To set the value of this State Object
+    // These two are very important in State Management in React
+    // ALWAYS use 'set' for the second naming example: {{{ const [example, setExample] = useState(0); }}}
+    const [counter, setCounter] = useState(0);
+
+    return (
+      <div className="App">
+        <button>-</button>
+        <h1>{counter}</h1>
+        <button>+</button>
+      </div>
+    );
+  }
+]]
+
+ONTHING WILL HAPPEN WHEN YOU CLICK THOSE BUTTONS, 
+UNLESS YOU SET EVENTS.
+
+
+
+      // EVENTS HANDLING IN REACT \\
+
+We can Alert The User About something, see code below
+[[
+  return (
+    <div className="App">
+      <button onClick={() => alert('clicked')}> - </button>
+      <h1> {counter} </h1>
+      <button> + </button>
+    </div>
+  );
+]]
+
+
+  // Increase And Decreas Number By Button Click \\
+[[
+  return (
+    <div className="App">
+      <button onClick={() => setCounter((decresCount) => decresCount - 1)}> - </button>
+      <h1> {counter} </h1>
+      <button onClick={() => setCounter((incresCount) => incresCount + 1)}> + </button>
+    </div>
+  );
+]]
+
+
+
+    // The useEffect Hooks \\
+Anything in React that start with 'use' Is A Hook, 
+example: useState, useEffect and many more.
+
+'useEffect' hooks runs when the progam starts or refreshed,
+see code below.
+[[
+  import { useState, useEffect } from 'react';
+  import './App.css';
+
+
+  // THIS IS THE MAIN(root) COMPONENT
+  const App = () => {
+    const [counter, setCounter] = useState(0);
+
+    // THIS CODE RUNS WHEN THE PROGRAM STARTS OR RESTARTS 
+    useEffect(() => {
+      alert('Current Price: ' + counter);
+    },[counter]);
+
+    return (
+      <div className="App">
+        <button onClick={() => setCounter((decresCount) => decresCount - 1)}> - </button>
+        <h1> {counter} </h1>
+        <button onClick={() => setCounter((incresCount) => incresCount + 1)}> + </button>
+      </div>
+    );
+  }
+
+  export default App;
+]]
+
+
+    { YOU NEED THESE FOLDER AND FILES FOR REACT }
+
+First the 'src' folder, then in it(src) create this two files: index.js and App.js.
+
+In App.js Write This code
+[[
+  import React from 'react';
+
+  const App = () => {
+      return (
+          <h1>App</h1>
+      );
+  }
+
+  export default App;
+]]
+
+
+In index.js Write This code
+[[
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+
+  import App from './App';
+
+  ReactDOM.render(<App />, document.getElementById('root'));
+]]
+
+
+    // Creating Movie API KEY \\
+
+Go to: http://www.omdbapi.com/apikey.aspx
+FREE Account, Fill The Form, READ IT, ACTIVATE IT, AND COPY KEY.
+Assign To A Variable
+[ const API_URL = 'http://www.omdbapi.com?apikey=API_KEY'; ]
+
+If You Receive False Response, 
+Go Back To Your Email And Replce 'const API_URL' value with the 'OMDb API' value(url).
+
+
+
+            // HOST REACT WEBAPP \\
+To host your react webapp always make sure you have your build folder,
+To Get your build folder, run this code at the root of your app [ npm run build ]
+
+
+
+$$$$$$$$$$ CONTINUE ON THE 12th June 2024 $$$$$$$$$$
+
+
+YOU CAN WRITE JS CODE IN JSX/HTML BY USING [ {} ] Example BELOW
+[
+  function Footer() {
+    
+    return (
+      <footer>
+          <h1>my footer</h1>
+          <p>&copy; { new Date().getFullYear() } Your website name</p>
+      </footer>
+    );
+  }
+]
+
+
+
+/// CARD COMPONENT \\\
+[
+  import profile_Pic from './assets/Me.jpg'
+
+  function Card() {
+      
+      return (
+          <div className="card">
+              <img className="card_Img" src={profile_Pic} alt="profile picture"/>
+              <h2 className="card_Title" >Dhope Nation</h2>
+              <p className='card_text' >I'm A Web Developer, And A Musician</p>
+          </div>
+      );
+  }
+
+  export default Card
+]
+
+
+
+/// HOW TO STYLE REACT COMPONENTS WITH CSS \\\
+(not including external frameworks or preprocessors)
+
+// 1. EXTERNAL - style in a css file.
+
+// 2. MODULES - specifily to each component / function.
+[
+  1. create new folder, move file(to be styled ex: Button.jsx) into folder.
+  2. create new file(button.module.css) in the new folder
+  3. In Button.jsx [
+      import styles from './Button.module.css'
+      // "./Button.module.css" has ".button{}" already
+
+      function Button() {
+          return (
+              <>
+              {/* <button className={styles.button}> THIS WILL CREATE A HASH REPRESENTATION OF THE ".button{}" */}
+              <button className={styles.button}>click me</button>
+              </>
+          );
+      }
+
+      export default Button
+    ]
+]
+
+// 3. IN-LINE
+[
+    function Button() {
+
+      // change "qwe-clr" to "qweClr" AND "clr: red;" TO 'clr: "red", '
+      const btn_Styles = {
+          width: "200px",
+          borderRadius: "50%"
+      }
+
+      return (
+          <button style={btn_Styles}>click me</button>
+      );
+    }
+
+  export default Button
+
+]
+
+
+
+   /// propTypes \\\
+propTypes = is a mechanism that ensures that the passed value is of the correct datatype.
+example: age: propTypes.number
+
+How to create propTypes [
+  import PropType from 'prop-types'
+
+  function Student(props) {
+      
+      return (
+          <div className="student_Card">
+              <p>Name: {props.name} </p>
+              <p>Age: {props.age} </p>
+              <p>is_Student: {props.is_Student ? "Yes" : "No"}</p>
+          </div>
+      );
+  }
+  Student.propTypes = {
+      name: PropType.string,
+      age: PropType.number,
+      is_Student: PropType.bool
+  }
+
+  export default Student
+]
+
+
+
+   /// DefaultProps \\\
+defaultProps = default values for props in case they are not 
+               passed from the parent component.
+[
+  function Student(props) {
+      
+      return (
+          <div className="student_Card">
+              <p>Name: {props.name} </p>
+              <p>Age: {props.age} </p>
+              <p>is_Student: {props.is_Student ? "Yes" : "No"}</p>
+          </div>
+      );
+  }
+  Student.defaultProps = {
+      name: "Enter Name",
+      age: 0,
+      is_Student: false
+  }
+
+  export default Student
+]
+
+
+
+    /// Conditional Rendering \\\
+conditional rendering = allows you to control what gets rendered
+                        in your application based on certain conditions.
+                        (show, hide, or change conponents)
+
+[
+  import User_Greeting from './User_Greeting';
+  import './App.css'
+
+  function App() {
+
+    return (
+      <>
+        <User_Greeting is_LoggedIn={true} username="Dhope" />
+      </>
+    );
+  }
+
+  export default App
+
+
+
+  
+
+  function User_Greeting(props) {
+
+      if (props.is_LoggedIn) {
+          return <h2>Welcome {props.username}</h2>
+      }
+      else {
+          return <h2>Please Log In to continue</h2>
+      }
+      
+  }
+
+  export default User_Greeting
+
+]
+
+
+
+    /// Rendering List \\\
+EXAMPLES
+[
+  EXAMPLE -1-
+  [
+      function List() {
+      
+        const fruits = ["apple", "orange", "banana", "coconut"]
+
+        // Sort String Array
+        fruits.sort();
+
+        // CONVERT AN ARRAY OF STRINGS TO AN ARRAY OF LIST ITEMS
+        const list_Item = fruits.map(fruit => <li>{fruit}</li>)
+        
+        return (<ul>{list_Item}</ul>);
+    }
+
+    export default List
+
+
+    import List from './List';
+    import './App.css'
+
+    function App() {
+
+      return (
+        <>
+        <List />
+        </>
+      );
+    }
+
+    export default App
+  ]
+
+  EXAMPLE -2-
+  [
+    function List() {
+    
+      const fruits = [
+          {id: 1, name: "apple", calories: 95}, 
+          {id: 2, name: "orange", calories: 17}, 
+          {id: 3, name: "banana", calories: 20}, 
+          {id: 4, name: "coconut", calories: 40}
+      ]
+
+      // Sort String Array
+      fruits.sort();
+
+      // THIS HELPS YOU SET THE KEY,"<li key={fruit.id}>" IT COULD RESLOVE ALOT OF PROBLEMS
+      // FOR SPACE "&nbsp;"
+      const list_Item = fruits.map(fruit => <li key={fruit.id}>{fruit.name}: &nbsp;
+                                              <b>{fruit.calories}</b></li>)
+      
+      return (<ul>{list_Item}</ul>);
+    }
+
+    export default List
+
+
+
+    import List from './List';
+    import './App.css'
+
+    function App() {
+
+      return (
+        <>
+        <List />
+        </>
+      );
+    }
+
+    export default App
+  ]
+]
+
+
+
+    /// CLICK EVENT \\\
+click event = it's an interaction when a user clicks on a specific element.
+              We can Response to clicks by passing
+              a callback to the onClick  event handler.
+[
+  BUTTON EXAMPLE -1-
+  [
+    function Button() {
+
+      // "e" means event
+      // click button to change button text
+      const handle_Click = (e) => e.target.textContent = "Goal";
+
+      return (
+          // On Click
+          //<button onClick={(e) => handle_Click(e)}>click me</button>
+          
+          // On Double Click
+          <button onDoubleClick={(e) => handle_Click(e)}>click me</button>
+      );
+    }
+
+    export default Button
+  ]
+
+  IMAGE EXAMPLE -2-
+  [
+    function Hide_Image() {
+    
+        const my_Img = './src/assets/Me.jpg';
+
+        // "e" means event
+        const handle_Click = (e) => e.target.style.display = "none";
+
+        return (<img src={my_Img} onClick={(e) => handle_Click(e)}></img>)
+    }
+
+    export default Hide_Image
+  ]
+]
+
+
+
+      /// useState() React Hook \\\
+React Hook = Is a special function that allows Functional component
+             to use React features without writing class components (React v16.8)
+             ex: (useState, useEffect, useContext, useReducer, useCallback and more ...)
+
+useState() = Is a React Hook that allows the creation of a Stateful Variable
+             And a setter function to update it's value in the Virtual DOM.
+             [name, setName]
+
+TO USE "useState()" WE NEED TO IMPORT IT: [ import React, {useState} from "react" ]
+
+[
+  EXAMPLE -1- Updata Variable
+  [
+    import React, {useState} from "react";
+
+    function My_Component(params) {
+        
+        // you can initialise it: "useState("Ghana")" 
+        // and the default value of "name" will be "Ghana"
+        const [name, set_Name] = useState();
+
+        const update_Name = () => {
+            set_Name("Dhope");
+        }
+
+        return (
+            <div>
+                <p>Name: {name}</p>
+                <button onClick={update_Name}>Set Name</button>
+            </div>
+        );
+    }
+
+    export default My_Component
+  ]
+
+  EXAMPLE -2- Increase Number
+  [
+    import React, {useState} from "react";
+
+    function My_Component(params) {
+        
+        const [age, set_Age] = useState(0);
+
+        const increment_Age = () => {
+            set_Age(age + 1)
+        }
+
+        return (
+            <div>
+                <p>Age: {age}</p>
+                <button onClick={increment_Age}>Increase Age</button>
+            </div>
+        );
+    }
+
+    export default My_Component
+  ]
+
+  EXAMPLE -3- Boolean
+  [
+    import React, {useState} from "react";
+
+    function My_Component() {
+
+        const [is_Employed, set_Is_Employed] = useState(false);
+
+        const toggle_Employed_Status = () => {
+            
+            // since it's a boolean, Switch to the opposite value
+            set_Is_Employed(!is_Employed);
+        }
+        
+        return (
+            <div>
+                <p>Is Employed: {is_Employed ? "Yes" : "No"}</p>
+                <button onClick={toggle_Employed_Status}>Toggle Status</button>
+            </div>
+        )
+    }
+
+    export default My_Component
+  ]
+
+
+  COUNTER PROJECT
+  [
+    import React, {useState} from "react";
+
+    function Counter() {
+
+        const [count, set_Count] = useState(0);
+        
+        const increment = () => {
+            set_Count(count + 1);
+        }
+
+        const decrement = () => {
+            set_Count(count - 1);
+        }
+        
+        const reset = () => {
+            set_Count(0);
+        }
+
+        return (
+            <div>
+                <h1>{count}</h1>
+                <button onClick={increment}>increase</button>
+                <button onClick={decrement}>decrease</button>
+                <button onClick={reset}>reset</button>
+            </div>
+        );
+    }
+
+    export default Counter
+  ]
+]
+
+
+
+      /// onChange \\\
+onChange = is a event handle used primarily with form elements,
+            ex: <input>, <textarea>, <select>, <radio>
+            It Triggers a function every time the value of the input changes.
+
+EXAMPLES
+[
+  EXAMPLE -1- DISPLAY CONTENT AS I TYPE IT {real-time}.
+  [
+    import React, {useState} from "react";
+
+    function On_Change() {
+        
+        const [name, set_Name] = useState("");
+
+        function handle_Name_Change(event) {
+            set_Name(event.target.value);
+        }
+
+        return (
+            <div>
+                <input value={name} onChange={handle_Name_Change} />
+                <p>Name: {name}</p>
+            </div>
+        )
+    }
+
+    export default On_Change
+  ]
+
+  EXAMPLE -2- DISPLAY QUANTITY {real-time}
+  [
+    import React, {useState} from "react";
+
+    function On_Change() {
+        
+        const [quantity, set_Quantity] = useState(1);
+
+        function handle_Quantit_Change(event) {
+            set_Quantity(event.target.value);
+        }
+
+        return (
+            <div>
+                <input type="number" value={quantity} onChange={handle_Quantit_Change} />
+                <p>Name: {quantity}</p>
+            </div>
+        )
+    }
+
+    export default On_Change
+  ]
+
+  EXAMPLE -3- DELIVERY INSTRUCTIONS {real-time}
+  [
+    import React, {useState} from "react";
+
+    function On_Change() {
+        
+        const [comment, set_Comment] = useState("");
+
+        function handle_Comment_Change(event) {
+            set_Comment(event.target.value);
+        }
+
+        return (
+            <div>
+                <textarea value={comment} onChange={handle_Comment_Change} placeholder="Enter Delivery Instrustions" />
+                <p>Name: {comment}</p>
+            </div>
+        )
+    }
+
+    export default On_Change
+  ]
+
+  EXAMPLE -4- PAYMENT SELECTION {real-time}
+  [
+    import React, {useState} from "react";
+
+    function On_Change() {
+        
+        const [payment, set_Payment] = useState("");
+
+        function handle_Payment_Change(event) {
+            set_Payment(event.target.value);
+        }
+
+        return (
+            <div>
+                <select value={payment} onChange={handle_Payment_Change}>
+                    <option value="">select and option</option>
+                    <option value="MasterCard">MasterCard</option>
+                    <option value="Visa">Visa</option>
+                    <option value="Gift Card">Gift Card</option>
+                </select>
+                <p>Payment: {payment}</p>
+            </div>
+        )
+    }
+
+    export default On_Change
+  ]
+
+  EXAMPLE -5- SHIPPING {real-time}
+  [
+    import React, {useState} from "react";
+
+    function On_Change() {
+        
+        const [shipping, set_Shipping] = useState("");
+
+        function handle_Shipping_Change(event) {
+            set_Shipping(event.target.value);
+        }
+
+        return (
+            <div>
+                {/*  "checked={shipping === "Pick up"}" Be Checked Only When "shipping" value is "Pick up" */}
+                <label>
+                    <input type="radio" value="Pick up"
+                      checked={shipping === "Pick up"}
+                      onChange={handle_Shipping_Change}/>
+                    Pick Up
+                </label><br></br>
+
+                {/*  "checked={shipping === "Delivery"}" Be Checked Only When "shipping" value is "Delivery" */}
+                <label>
+                    <input type="radio" value="Delivery"
+                      checked={shipping === "Delivery"}
+                      onChange={handle_Shipping_Change} />
+                    Delivery
+                </label>
+
+                <p>Shipping: {shipping}</p>
+            </div>
+        )
+    }
+
+    export default On_Change
+  ]
+]
+
+
+
+      /// COLOR PICKER PROGRAM PROJECT \\\
+[
+  import React, {useState} from "react"
+
+  function Color_Picker() {
+
+      const [color, set_Color] = useState("blue");
+
+      function handle_Color_Change(event) {
+          set_Color(event.target.value)
+      }
+
+      return (
+          <div>
+              <h1>Color Picker</h1>
+              {/* TO Style Something in "App_Name.jsx" you nedd double kally braces: {{ backgroundColor: white }} */}
+              <div style={{ backgroundColor: color }}>
+                  <p>Selected Color: {color}</p>
+              </div>
+              <label>Select a Color:</label>
+              <input type="color" value={color} onChange={handle_Color_Change} />
+          </div>
+      )
+  }
+
+  export default Color_Picker
+]
+
+
+
+        /// Updater Function \\\
+update function = is a function passed as an argument to useState() usually
+                  ex. setYear(arrow function).
+                  It Allows for safe updates based on the previous state
+                  Tipically used with multiple state updates and asynchronous functions.
+                  It's a Good Practice to use update functions.
+[
+  without using update function, React will group all the code in the function together and update once.
+
+  But, when you use update function, React will update the code one by one adding the previous to the Current.
+  !! REMEMBER TO CHNAGE THE NAME OF THE VARIABLE, EXAMPLE BELOW !!
+  [
+    function My_Component() {
+
+      const [count, set_Count] = useState();
+
+      function increment() {
+
+        // DON'T DO this \\
+        set_Count(count + 1); 
+        set_Count(count + 1); 
+        set_Count(count + 1); 
+        // OUTPUT WILL BE "1"
+
+        // DO THIS \\
+        set_Count(prev_Count => prev_Count + 1);
+        set_Count(prev_Count => prev_Count + 1);
+        set_Count(prev_Count => prev_Count + 1);
+        // OUTPUT WILL BE: "3"
+      }
+    }
+  ]
+]
+
+
+
+      /// UPDATE THE STATE OF OBJECT \\\
+[
+  import React, {useState} from "react";
+
+  function Car() {
+
+      // THE CAR OBJECT
+      const [car, set_Car] = useState(
+          {
+              year: 2024,
+              make: "BMW",
+              model: "Classic"
+          }
+      );
+
+      function handle_Year_Change(event) {
+
+          /*
+              set_Car({year: event.target.value}) this will update ONLY car.year and REMOVE car.make AND car.model !!  the car object will be overwriten, with the year ONLY!!
+
+              SO, we will use the spread operator: set_Car(...car, year: event.target.value); this will keep the other values.
+              
+              FOR BETTER PRACTICE WE WILL USE update function: set_Car(prev_Car => ({...prev_Car, year: event.target.value}));
+              the code above is a safer way, specily if you're updating multiple times.
+          */
+
+          set_Car(prev_Car => ({...prev_Car, year: event.target.value}));
+      }
+
+      function handle_Make_Change(event) {
+          set_Car(prev_Car => ({...prev_Car, make: event.target.value}));
+      }
+
+      function handle_Model_Change(event) {
+          set_Car(prev_Car => ({...prev_Car, model: event.target.value}));
+      }
+      
+      return (
+          <div>
+              <p>Your Favorite Car is: {car.year} {car.make} {car.model}</p>
+
+              <input type="number" value={car.year} onChange={handle_Year_Change} />
+              <input type="text" value={car.make} onChange={handle_Make_Change}  />
+              <input type="text" value={car.model} onChange={handle_Model_Change} />
+          </div>
+      );
+  }
+
+  export default Car
+]
+
+
+
+      /// UPDATE THE STATE OF ARRAY \\\
+[
+  import React, {useState} from "react";
+
+  function Car() {
+
+      // THE CAR OBJECT
+      const [foods, set_Foods] = useState( ["Apple", "Orange", "Banana", "Mango"] );
+
+
+      function handle_Add_Food() {
+
+          const new_Food = document.getElementById("food_Input").value;
+          document.getElementById("food_Input").value = "";
+
+          // Add to existing Array List
+          set_Foods(prev_Food => ([...prev_Food, new_Food]));
+          
+      }
+
+      // Click list to remove element
+      function handle_Remove_Food(index) {
+
+          set_Foods(
+              // Filter(Display) ALL elements, who's index(key) is not "==" to the "index" of the element clicked.
+              foods.filter(
+                  // when you see "_" as a parameter it means: ignor this parameter
+                  (_, element_Index) => element_Index !== index
+              )
+          );
+          
+      }
+      
+      return (
+          <div>
+              <p>List of Food</p>
+              <ul>
+                  {/* Each child in a list should have a unique "key", 
+                  thats why we added index with food. */}
+                  {   
+                      foods.map((food, index) =>
+                          // Click list to remove element
+                          <li key={index} onClick={() => handle_Remove_Food(index)}>
+                              {food}
+                          </li>
+                      ) 
+                  }
+              
+                  <input type="text" id="food_Input" placeholder="Enter food name" />
+                  <button onClick={handle_Add_Food}>Add Food</button>
+              </ul>
+
+          </div>
+      );
+  }
+
+  export default Car
+]
+
+
+
+      /// UPDATE THE STATE OF AN ARRAY OF OBJECTS \\\
+[
+  import React, {useState} from "react";
+
+  function Car() {
+
+      // Array of Objects
+      const [cars, set_Cars] = useState([]);
+
+      const [car_Year, set_Car_Year] = useState(new Date().getFullYear())
+      const [car_Make, set_Car_Make] = useState("");
+      const [car_Model, set_Car_Model] = useState("");
+
+      function handle_Add_Car() {
+          
+          const new_Car = {
+              year: car_Year,
+              make: car_Make,
+              model: car_Model
+          }
+
+          set_Cars(prev_Cars => [...prev_Cars, new_Car]);
+
+          // RESETTING TO DEFAULT
+          set_Car_Year(new Date().getFullYear());
+          set_Car_Make("");
+          set_Car_Model("");
+      }
+
+      // CLICK CAR TO REMNOVE CLICK
+      function handle_Remove_Car(index) {
+          set_Cars(
+              prev_Cars => prev_Cars.filter(
+                  ( _, element_Index ) => element_Index !== index
+              )
+          )
+      }
+
+      function handle_Year_Chg(event) {
+          set_Car_Year(event.target.value);
+      }
+
+      function handle_Make_Chg(event) {
+          set_Car_Make(event.target.value);
+      }
+
+      function handle_Model_Chg(event) {
+          set_Car_Model(event.target.value);
+      }
+
+      
+      return (
+          <div>
+              <h2>List of Car Objects</h2>
+              <ul>
+                  {
+                      cars.map(
+                          (car, index) =>
+                              <li key={index} onClick={() => handle_Remove_Car(index)}>
+                                  {car.year} {car.make} {car.model}
+                              </li>
+                      )
+                  }
+              </ul>
+
+              <input type="number" value={car_Year} onChange={handle_Year_Chg} /><br />
+              <input type="text" value={car_Make} onChange={handle_Make_Chg} placeholder="Car made by" /><br />
+              <input type="text" value={car_Model} onChange={handle_Model_Chg} placeholder="car model" /><br />
+              <button type="submit" onClick={handle_Add_Car}>Add Car</button>
+
+          </div>
+      );
+  }
+
+  export default Car
+]
+
+
+
+      ///// --- TO-DO LIST PROJECT --- \\\\\
+[
+  import React, {useState} from "react";
+
+  function To_Do_List() {
+      
+      const [tasks, set_Tasks] = useState(["breakfast", "bath", "walk dog"]);
+      const [new_Task, set_New_Task] = useState("");
+
+      function handle_Input_Chg(event) {
+          set_New_Task(event.target.value);
+      }
+
+      function add_Task() {
+
+          if (new_Task.trim() !== "") {
+
+              set_Tasks(prev_Tasks => [...prev_Tasks, new_Task]);
+
+              // RESETTING TEXT FIELD
+              set_New_Task("");
+          }
+      }
+
+      function remove_Task(index) {
+          
+          const updated_Tasks = tasks.filter(
+              ( _, element_Index ) => element_Index !== index
+          );
+          set_Tasks(updated_Tasks);
+      }
+
+      function move_Task_Up(index) {
+          
+          if (index > 0) {
+              const updated_Tasks = [...tasks];
+
+              // SWAPPING ELEMENTS with OBJECT DESTRUCTION
+              [updated_Tasks[index], updated_Tasks[index - 1]] = [updated_Tasks[index - 1], updated_Tasks[index]];
+
+              set_Tasks(updated_Tasks);
+          }
+      }
+
+      function move_Task_Down(index) {
+          
+          if (index < tasks.length - 1) {
+              const updated_Tasks = [...tasks];
+
+              // SWAPPING ELEMENTS with OBJECT DESTRUCTION
+              [updated_Tasks[index], updated_Tasks[index + 1]] = [updated_Tasks[index + 1], updated_Tasks[index]];
+
+              set_Tasks(updated_Tasks);
+          }
+      }
+
+
+      return (
+          <div className="to_Do_List">
+              <h1>To-Do-List</h1>
+
+              <div>
+                  <input 
+                      type="text" 
+                      placeholder="Enter a task" 
+                      value={new_Task} 
+                      onChange={handle_Input_Chg} 
+                  />
+                  <button
+                      className="add_button"
+                      onClick={add_Task}
+                  >
+                      add
+                  </button>
+
+                  <ol>
+                      {
+                          tasks.map(
+                              (task, index) => 
+                                  <li key={index}> 
+                                      <span className="text"> {task} </span> 
+
+
+                                      <button 
+                                          className="remove_btn" 
+                                          onClick={() => remove_Task(index)}
+                                      >
+                                          delect
+                                      </button>
+
+                                      <button 
+                                          className="move_btn" 
+                                          onClick={() => move_Task_Up(index)}
+                                      >
+                                          👆
+                                      </button>
+
+                                      <button 
+                                          className="move_btn" 
+                                          onClick={() => move_Task_Down(index)}
+                                      >
+                                          👇
+                                      </button>
+
+
+                                  </li>
+                          )
+                      }
+                  </ol>
+
+              </div>
+          </div>
+      );
+  }
+
+  export default To_Do_List
+]
+
+
+
+      /// useEffect() React Hook \\\
+useEffect = It's a React Hook that tells React to: DO SOME CODE WHEN:
+            A Component re-renders OR
+            A Component mounts OR
+            The State of a value changes
+
+Think of useEffect() as a side code you would like to perform after a condition is meat.
+
+useEffect( (write side code here, within a function), [you can pass in array of dependencies] );
+!! EXAMPLES BELOW !!
+  [
+    1. useEffect(() => {})                   =   Run after every re-render
+    [
+        useEffect(
+            () => {
+                document.title = `Count: ${count}`;
+            }
+        )
+    ]
+
+    2. useEffect(() => {}, [KEEP IT EMPTY])  =   Run ONLY on Mount (runs ONCE on boot)
+    [
+        useEffect(
+            () => {
+                document.title = "My Counter Program";
+            }, []
+        )
+    ]
+
+    3. useEffect(() => {}, [value])          =   Run on Mount AND when value changes
+    [
+        // Run ONLY When atleast one of the dependences[count, clr] Changes
+        useEffect(
+            () => {
+                document.title = `counter: ${count} ${clr}`;
+            }, [count, clr]
+        )
+    ]
+  ]
+
+useEffect() USES
+  1. Event Listeneers
+  [
+    useEffect(
+        () => {
+            window.addEventListener("resize", handle_Resize);
+            console.log("added");
+        }, []
+    )
+  ]
+
+  2. DOM manipulation
+  3. Subscriptions (real-time updates)
+  4. Fetching Data from an API
+  5. Clean up when a component unmounts
+  [
+    useEffect(
+        () => {
+            window.addEventListener("resize", handle_Resize);
+            console.log("added");
+
+            // when we unmount component, removeEventListener to FREE up space for other component
+            // !! IF NOT DONE, MAY LEAD TO UNEXPECTED BEHAVIOUR !!
+            return () => {
+                window.removeEventListener("resize", handle_Resize);
+                console.log("removed");
+            }
+        }, []
+    )
+  ]
+
+EXAMPLES 
+[
+  [
+    import React, {useState, useEffect} from "react";
+
+    function MyComponent() {
+
+        const [count, set_Count] = useState(0);
+        const [clr, set_Clr] = useState("green");
+
+        // Run ONLY When atleast one of the dependences[count, clr] Changes
+        useEffect(
+            () => {
+                document.title = `counter: ${count} ${clr}`;
+            }, [count, clr]
+        )
+
+        function add_Count() {
+            set_Count(prev_Count => prev_Count + 1);
+        }
+
+        function substract_Count() {
+            set_Count(prev_Count => prev_Count - 1);
+        }
+
+        function chg_Color() {
+            set_Clr(prev_clr => prev_clr === "green" ? "red" : "green");
+        }
+
+
+        return (
+            <div>
+                <p style={{color: clr}}>Count: {count}</p>
+                <button onClick={add_Count}>Add</button>
+                <button onClick={substract_Count}>Substrct</button>
+                <button onClick={chg_Color}>Change Color</button>
+            </div>
+        )
+        
+    }
+
+    export default MyComponent
+  ]
+
+
+
+
+
+  [
+    import React, {useState, useEffect} from "react";
+
+    function MyComponent() {
+
+        const [width, set_Width] = useState(window.innerWidth);
+        const [height, set_Height] = useState(window.innerHeight);
+
+        // WITHOUT USING useEffect()
+        // window.addEventListener("resize", handle_Resize);
+
+        // USING useEffect()
+        useEffect(
+            () => {
+                window.addEventListener("resize", handle_Resize);
+                console.log("added");
+
+                // when we unmount the component removeEventListener, to FREE up space for other component
+                // !! IF NOT DONE, MAY LEAD TO UNEXPECTED BEHAVIOUR !!
+                return () => {
+                    window.removeEventListener("resize", handle_Resize);
+                    console.log("removed");
+                }
+            }, []
+        )
+
+        useEffect(
+            () => {
+                document.title = `Size: ${width} x ${height}`;
+            }, [width, height]
+        )
+
+        function handle_Resize() {
+            set_Width(window.innerWidth);
+            set_Height(window.innerHeight);
+        }
+
+        return (
+            <div>
+                <p>Window Width: {width}px</p>
+                <p>Window Height: {height}px</p>
+            </div>
+        )
+        
+    }
+
+    export default MyComponent
+  ]
+]
+
+
+
+          ///// --- DIGITAL CLOCK PROJECT --- \\\\\
+[
+  import React, {useState, useEffect} from "react"
+
+  function Digital_Clock() {
+
+      const [time, set_Time] = useState(new Date());
+
+      useEffect(
+          () => {
+              const interval_Id = setInterval(
+                  () => {
+                      set_Time(new Date())
+                  }, 
+                  1000
+              )
+
+              // WHEN WE UNMOUNT THE COMPONENT, CLEAN INTERVAL TO FREE UP SPACE
+              // !! IF NOT DONE, MAY LEAD TO UNEXPECTED BEHAVIOUR !!
+              return () => {
+                  clearInterval(interval_Id);
+              }
+          }, []
+      )
+
+      function format_Time() {
+
+          let hours = time.getHours();
+          const minutes = time.getMinutes();
+          const seconds = time.getSeconds();
+          let meridiem = hours >= 12 ? "PM" : "AM";
+
+          // CONVERT FROM MILITARY TIME
+          // if "hours % 12" = "0" it means false thus why we added "|| 12" to display "12" if "hours % 12" = "0".
+          hours = hours % 12 || 12;
+
+          return `${start_With_Zero(hours)}:${start_With_Zero(minutes)}:${start_With_Zero(seconds)} ${meridiem}`;
+      }
+
+      // USING STRING CONCATENATION TO ADD "0" TO number least than "10"
+      function start_With_Zero(number) {
+          return (number < 10 ? "0" : "") + number;
+      }
+      
+      return (
+          <div className="clock_Container">
+              <div className="clock">
+                  <span>{format_Time()}</span>
+              </div>
+          </div>
+      )
+  }
+
+  export default Digital_Clock
+]
+
+
+
+        /// useContext() \\\
+[
+  useContext() = Is a React Hook that allows you to share values
+               between multiple levels of components 
+               without passing props through each level.
+               
+               We NEED to SET UP provider component.
+
+  !! 
+    ANY COMPONENT THAT IS A CHILD COMPONENT OF THE PROVIDER COMPONENT, HAS ACCESS TO VALUES SETUP USING createContext() IN THE PROVIDER COMPONENT. 
+  !!
+
+  PROVIDER COMPONENT ( holding the wanted data )
+  [
+    1. import React, {createContext} from 'react';
+    2. export const my_Context = createContext();
+    3.  <my_Context.Provider value={user}>
+            <ComponentB />
+        </my_Context.Provider>
+      [
+        import React, {useState, createContext} from "react";
+        import ComponentB from "./ComponentB";
+
+        export const my_Context = createContext();
+
+        function ComponentA() {
+
+            const [user, set_User] = useState("Dhope");
+            
+            return (
+                <div className="box">
+                    <h1>ComponentA</h1>
+                    <h2>{`Hello ${user}`}</h2>
+                    
+                    <my_Context.Provider value={user}>
+                        <ComponentB />
+                    </my_Context.Provider>
+                </div>
+            )
+        }
+
+        export default ComponentA
+      ]
+  ]
+
+  CONSUMER COMPONENT ( wants and receives the data )
+  [
+    1. import React, {useContext} from "react";
+    2. import { my_Context } from "./ComponentA";
+    3. const value = useContext(my_Context);
+    [
+      import React, {useContext} from "react";
+      import { my_Context } from "./ComponentA";
+      import ComponentC from "./ComponentC"
+
+      function ComponentB() {
+
+          const value = useContext(my_Context);
+
+          return (
+              <div className="box">
+                  <h1>ComponentB</h1>
+                  <h2>{`Hello ${value}`}</h2>
+                  <ComponentC />
+              </div>
+          )
+      }
+
+      export default ComponentB
+    ]
+  ]
+]
+
+
+
+        /// useRef() \\\
+useRef() = "use Reference" dose not cause re-renders when it's value changes.
+            When you want a component to "REMEMBER" some information,
+            but you don't want that information to trigger new renders.
+
+            useRef() returns a ref object with a single property: "current" initially set to the initial value you provided.
+
+USED FOR:
+1. Accessing / interacting with DOM elements
+2. Handling Focus, Animations, and Transitions
+3. Managed Timers and Intervals.
+[
+  import React, {useState, useEffect, useRef} from "react";
+
+  function My_Component() {
+      
+      const input_Ref1 = useRef(null);
+      const input_Ref2 = useRef(null);
+      const input_Ref3 = useRef(null);
+
+      useEffect(
+          () => {
+              console.log("component removed");
+          }
+      )
+
+      function handle_Click1() {
+          input_Ref1.current.focus();
+          input_Ref1.current.style.backgroundColor = "yellow";
+          input_Ref2.current.style.backgroundColor = "";
+          input_Ref3.current.style.backgroundColor = "";
+      }
+
+      function handle_Click2() {
+          input_Ref2.current.focus();
+          input_Ref1.current.style.backgroundColor = "";
+          input_Ref2.current.style.backgroundColor = "yellow";
+          input_Ref3.current.style.backgroundColor = "";
+      }
+
+      function handle_Click3() {
+          input_Ref3.current.focus();
+          input_Ref1.current.style.backgroundColor = "";
+          input_Ref2.current.style.backgroundColor = "";
+          input_Ref3.current.style.backgroundColor = "yellow";
+      }
+
+      return (
+          <div>
+              <button onClick={handle_Click1}>
+                  click me!
+              </button>
+              <input ref={input_Ref1} /><br />
+
+              <button onClick={handle_Click2}>
+                  click me!
+              </button>
+              <input ref={input_Ref2} /><br />
+
+              <button onClick={handle_Click3}>
+                  click me!
+              </button>
+              <input ref={input_Ref3} />
+          </div>
+      )
+  }
+
+  export default My_Component
+]
+
+
+
+         ///// --- TIMER PROJECT --- \\\\\
+[
+  import React, {useState, useEffect, useRef} from "react"
+
+  function StopWatch() {
+
+      const [is_Running, set_Is_Running] = useState(false);
+      const [elapsed_Time, set_Elapsed_Time] = useState(0);
+      const interval_Id_Ref = useRef(null);
+      const start_Time_Ref = useRef(0);
+
+      useEffect(
+          () => {
+              if (is_Running) {
+                  interval_Id_Ref.current = setInterval(
+                      () => {
+                          set_Elapsed_Time(Date.now() - start_Time_Ref.current)
+                      },
+                  10)
+              }
+
+              return () => {
+                  clearInterval(interval_Id_Ref.current);
+              }
+
+          }, [is_Running]
+      );
+
+      function start() {
+          set_Is_Running(true);
+          start_Time_Ref.current = Date.now() - elapsed_Time;
+      }
+
+      function stop() {
+          set_Is_Running(false);
+      }
+
+      function reset() {
+          set_Elapsed_Time(0);
+          set_Is_Running(false);
+      }
+
+      function format_Time() {
+          
+          let hours = Math.floor(elapsed_Time / (1000 * 60 * 60));
+          let minutes = Math.floor(elapsed_Time / (1000 * 60) % 60);
+          let seconds = Math.floor(elapsed_Time / (1000) % 60);
+          // to display only "2" digits: "/ 10".
+          let milliseconds = Math.floor((elapsed_Time % 1000) / 10);
+
+          hours = String(hours).padStart(2, "0");
+          minutes = String(minutes).padStart(2, "0");
+          seconds = String(seconds).padStart(2, "0");
+          milliseconds = String(milliseconds).padStart(2, "0");
+
+          return `${hours}:${minutes}:${seconds}:${milliseconds}`;
+      }
+
+
+      return (
+          <div>
+              <div>{format_Time()}</div>
+              <div>
+                  <button onClick={start}>start</button>
+                  <button onClick={reset}>reset</button>
+                  <button onClick={stop}>stop</button>
+              </div>
+          </div>
+      )
+      
+  }
+
+  export default StopWatch
+]
+           
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
